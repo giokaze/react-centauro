@@ -1,20 +1,31 @@
 import React, {useState} from 'react';
 import './Login.css';
 
-import logo from '../assets/logo.svg';
+import api from '../../services/api';
 
-export default function Login() {
+import logo from '../../assets/logo.svg';
+
+export default function Login({history}) {
 
     const [username, setUsername] = useState('');
 
-    function submit(usernames) {
+    async function searchUser(usernames) {
         usernames.preventDefault();
+        
         console.log("username", username);
+
+        const response = await api.get('/users/' + username);
+
+        console.log("response", response);
+
+        const {_login} = response.data.login;
+
+        history.push(`/user/${_login}`);
     }
 
     return (
         <div className="login-content">
-            <form onSubmit={submit}>
+            <form onSubmit={searchUser}>
                 <img src={logo} alt="github" />
                 <input type="text" placeholder="Digite o usuário do Github" value={username} onChange={ u => setUsername(u.target.value)}/>
                 <button type="submit">Buscar</button>
