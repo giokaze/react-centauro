@@ -11,16 +11,14 @@ export default function Login({history}) {
 
     async function searchUser(usernames) {
         usernames.preventDefault();
-        
-        console.log("username", username);
 
         const response = await api.get('/users/' + username);
 
         console.log("response", response);
 
-        const {_login} = response.data.login;
+        const {_id} = response.data
 
-        history.push(`/user/${_login}`);
+        history.push(`/user/${_id}`);
     }
 
     return (
