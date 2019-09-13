@@ -3,8 +3,7 @@ import {extendObservable, action} from 'mobx';
 class AppStore {
   constructor() {
     extendObservable(this, {
-      title: 'MobX Router Tutorial',
-      user: undefined
+      title: 'Teste Centauro'
     });
   }
 
