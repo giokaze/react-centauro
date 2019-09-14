@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
 import {extendObservable} from 'mobx';
 
+import eye from '../../assets/eye.svg';
+import fork from '../../assets/fork.svg';
+import star from '../../assets/star.svg';
+
 import './user.css';
 
 import views from 'config/views';
@@ -12,7 +16,7 @@ class User extends Component {
     super(props)
     extendObservable(this, {
       user: {},
-      repositories: {}
+      repositories: []
     });
     this.searchUser(props.store.router.params.username);
     this.searchRepos(props.store.router.params.username);
@@ -27,11 +31,41 @@ class User extends Component {
     console.log("user", user);
     console.log("repos", repositories);
 
+    var listItems = repositories.sort((a,b) => a.stargazers_count > b.stargazers_count)
+    .map((item, i) => {
+        console.log(item);
+        return (
+          <div item={item} key={i} className="card-list">
+            <div className="user-repositories-title">
+              <div className="flex">
+                <span>name:</span>
+                <p>{item.name}</p>
+              </div>
+              <div className="flex">
+                <img src={star} alt="star"/>
+                <p>{item.stargazers_count}</p>
+              </div>
+            </div>
+            <div className="user-repositories-title">
+              <div className="flex">
+                <span>language:</span>
+                <p>{item.language}</p>
+              </div>
+              <div className="flex">
+              <img src={eye} alt="watchers"/>
+                <p>{item.watchers}</p>
+              </div>
+              <div className="flex">
+              <img src={fork} alt="forks"/>
+                <p>{item.forks}</p>
+              </div>
+            </div>
+          </div>
+        );
+    });
+
     return (
       <div className="user-content">
-        {/* <div className="header-content">
-          <button onClick={() => goTo(views.home, store)}></button>
-        </div> */}
         <div className="user-description">
           <div className="div-img">
             <img src={user.avatar_url}/>
@@ -59,6 +93,18 @@ class User extends Component {
                 <span>About:</span>
                 <p>{user.bio}</p>
           </div>
+        </div>
+        <div className="user-repositories">
+          <div className="user-repositories-title">
+            <h3>Repositories:</h3>
+            <button>*</button>
+          </div>
+          <div className="user-repositories-list">
+            {listItems}
+          </div>
+        </div>
+        <div className="footer-content">
+          <button onClick={() => goTo(views.home, store)}>Voltar</button>
         </div>
       </div>
     );
