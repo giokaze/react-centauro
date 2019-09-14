@@ -40,7 +40,7 @@ class Home extends Component {
               <img src={logo} alt="github"/>
               <input type="text" placeholder="Digite o usuário do Github" name="username" value={username} onChange={this.onChange}></input>
               <button>
-                go to usergit
+                Buscar
               </button>
           </form>
         </div>
