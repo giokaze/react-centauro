@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {MobxRouter, startRouter} from 'mobx-router';
+import 'index.css';
 
 //mobx
 import {Provider} from 'mobx-react';
@@ -12,10 +13,6 @@ startRouter(views, store);
 
 ReactDOM.render(
   <Provider store={store}>
-    <div>
-      <h1>{store.app.title}</h1>
-      <button onClick={() => store.router.goTo(views.home)}> go home</button>
       <MobxRouter/>
-    </div>
   </Provider>, document.getElementById('root')
 )

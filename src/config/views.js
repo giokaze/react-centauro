@@ -14,7 +14,13 @@ const views = {
   }),
   user: new Route({
     path: '/user/:username',
-    component: <User/>
+    component: <User/>,
+    onEnter: (route, params) => {
+      console.log('entering user profile!', params);
+    },
+    beforeExit: () => {
+      console.log('exiting user profile!');
+    }
   })
 };
 export default views;
