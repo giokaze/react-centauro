@@ -22,7 +22,7 @@ class Home extends Component {
     const {username} = this;
     const {store} = this.props;
     const {router: {goTo}} = store;
-    goTo(views.user, username, store)
+    goTo(views.user, {username}, store)
   }
 
   onChange = e => {

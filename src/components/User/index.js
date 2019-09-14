@@ -7,11 +7,13 @@ class User extends Component {
   render() {
 
     const {store} = this.props;
-    const {router: {goTo}} = store;
+    const {router: {params, goTo}} = store;
+
+    console.log(params);
 
     return (
       <div>
-        <h3>USER</h3>
+        <p>{params.username}</p>
         <button onClick={() => goTo(views.home, store)}></button>
       </div>
     );

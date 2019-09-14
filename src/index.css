@@ -3,10 +3,13 @@
     padding: 0;
     outline: 0;
     box-sizing: border-box;
-    height: 100%;
 }
 
 html, body, #root {
+    height: 100%;
+}
+
+#root > div {
     height: 100%;
 }
 
