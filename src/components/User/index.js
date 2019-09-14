@@ -28,12 +28,9 @@ class User extends Component {
     const {router: {params, goTo}} = store;
     const user = this.user;
     const repositories = this.repositories
-    console.log("user", user);
-    console.log("repos", repositories);
 
     var listItems = repositories.sort((a,b) => a.stargazers_count > b.stargazers_count)
     .map((item, i) => {
-        console.log(item);
         return (
           <div item={item} key={i} className="card-list">
             <div className="user-repositories-title">
