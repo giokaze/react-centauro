@@ -76,7 +76,7 @@ span {
 }
 
 .user-bio-description .div-long {
-    padding-top: 15px;
+    padding-top: 10px;
 }
 
 .user-bio-description .div-long  p {
@@ -98,6 +98,9 @@ span {
     border-radius: 5px;
     padding: 10px;
     margin: 10px 0px;
+    -webkit-box-shadow: 2px 5px 16px -8px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 5px 16px -8px rgba(0,0,0,0.75);
+    box-shadow: 2px 5px 16px -8px rgba(0,0,0,0.75);
 }
 
 .footer-content {
