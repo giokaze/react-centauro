@@ -27,7 +27,7 @@ const views = {
     }
   }),
   item: new Route({
-    path: '/item/:fullname',
+    path: '/item/:name',
     component: <Item/>,
     onEnter: (route, params) => {
       console.log('entering user profile!', params);

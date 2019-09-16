@@ -1,0 +1,29 @@
+.item-content {
+    height: 100%;
+}
+
+.item-content .header-content {
+    text-align: center;
+    border-bottom: 1px solid #e8e8e8;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+.item-content .item-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-description .description {
+    padding: 5px;
+    margin-top: 10px
+}
+
+.url {
+    display: grid;
+}
+
+.flex-description {
+    display: flex;
+    justify-content: space-around;
+}

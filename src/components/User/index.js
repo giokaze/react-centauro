@@ -24,10 +24,10 @@ class User extends Component {
     this.searchRepos(props.store.router.params.username);
   }
 
-  verifyDetailsItem = (itemName) => {
+  verifyDetailsItem = (name, fullname, username) => {
     const {store} = this.props;
     const {router: {goTo}} = store;
-    goTo(views.item, {itemName}, store)
+    goTo(views.item, {name, fullname, username}, store)
   }
 
   render() {
@@ -39,12 +39,12 @@ class User extends Component {
 
     const orderByStars = R.descend(R.prop('stargazers_count'));
 
-    const ordered = R.sort(orderByStars, repositories)
+    const ordered = R.sort(orderByStars, repositories);
 
     var listItems = ordered
     .map((item, i) => {
         return (
-          <div item={item} key={i} className="card-list" onClick={() => this.verifyDetailsItem(item.full_name)}>
+          <div item={item} key={i} className="card-list" onClick={() => this.verifyDetailsItem(item.name, item.full_name, item.owner.login)}>
             <div className="user-repositories-title">
               <div className="flex">
                 <span>name:</span>
