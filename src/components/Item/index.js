@@ -25,9 +25,6 @@ class Item extends Component {
     const project = this.item;
     const username = store.router.params.username;
 
-    console.log("params", params);
-    console.log(project);
-
     return (
         <div className="item-content">
             <div className="header-content">
