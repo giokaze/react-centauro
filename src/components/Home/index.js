@@ -39,9 +39,7 @@ class Home extends Component {
           <form onSubmit={this.onSubmit}>
               <img src={logo} alt="github"/>
               <input type="text" placeholder="Digite o usuário do Github" name="username" value={username} onChange={this.onChange}></input>
-              <button>
-                Buscar
-              </button>
+              <button disabled={!username}>Buscar</button>
           </form>
         </div>
     );

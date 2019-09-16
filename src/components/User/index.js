@@ -5,6 +5,7 @@ import {extendObservable} from 'mobx';
 import eye from '../../assets/eye.svg';
 import fork from '../../assets/fork.svg';
 import star from '../../assets/star.svg';
+import loop from '../../assets/loop.svg';
 
 import './user.css';
 
@@ -94,7 +95,7 @@ class User extends Component {
         <div className="user-repositories">
           <div className="user-repositories-title">
             <h3>Repositories:</h3>
-            <button>*</button>
+            <button className="button-icon"><img src={loop}/></button>
           </div>
           <div className="user-repositories-list">
             {listItems}

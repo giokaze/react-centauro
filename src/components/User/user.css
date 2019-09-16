@@ -103,6 +103,13 @@ span {
     box-shadow: 2px 5px 16px -8px rgba(0,0,0,0.75);
 }
 
+.button-icon {
+    border: none;
+    background: none;
+    outline: 0;
+    width: 20px;
+}
+
 .footer-content {
     bottom: 0;
     padding: 10px;
@@ -118,4 +125,10 @@ span {
     cursor: pointer;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+@media (max-width: 320px) {
+    h3, p {
+        font-size: 15px;
+    }
 }
