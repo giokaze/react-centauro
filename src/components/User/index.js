@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {inject, observer} from 'mobx-react';
 import {extendObservable} from 'mobx';
+import * as R from 'ramda';
 
 import eye from '../../assets/eye.svg';
 import fork from '../../assets/fork.svg';
@@ -23,17 +24,27 @@ class User extends Component {
     this.searchRepos(props.store.router.params.username);
   }
 
+  verifyDetailsItem = (itemName) => {
+    const {store} = this.props;
+    const {router: {goTo}} = store;
+    goTo(views.item, {itemName}, store)
+  }
+
   render() {
 
     const {store} = this.props;
     const {router: {params, goTo}} = store;
     const user = this.user;
-    const repositories = this.repositories
+    const repositories = this.repositories;
 
-    var listItems = repositories.sort((a,b) => a.stargazers_count > b.stargazers_count)
+    const orderByStars = R.descend(R.prop('stargazers_count'));
+
+    const ordered = R.sort(orderByStars, repositories)
+
+    var listItems = ordered
     .map((item, i) => {
         return (
-          <div item={item} key={i} className="card-list">
+          <div item={item} key={i} className="card-list" onClick={() => this.verifyDetailsItem(item.full_name)}>
             <div className="user-repositories-title">
               <div className="flex">
                 <span>name:</span>
