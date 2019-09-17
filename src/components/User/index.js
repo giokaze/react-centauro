@@ -6,7 +6,7 @@ import * as R from 'ramda';
 import eye from '../../assets/eye.svg';
 import fork from '../../assets/fork.svg';
 import star from '../../assets/star.svg';
-import loop from '../../assets/loop.svg';
+import arrow from '../../assets/arrow.svg';
 
 import './user.css';
 
@@ -22,12 +22,18 @@ class User extends Component {
     });
     this.searchUser(props.store.router.params.username);
     this.searchRepos(props.store.router.params.username);
+    this.listItems = [];
   }
 
   verifyDetailsItem = (name, fullname, username) => {
     const {store} = this.props;
     const {router: {goTo}} = store;
     goTo(views.item, {name, fullname, username}, store)
+  }
+
+  orderByItem = (array) => {
+    this.listItems = array.reverse();
+    console.log(this.listItems);
   }
 
   render() {
@@ -41,7 +47,7 @@ class User extends Component {
 
     const ordered = R.sort(orderByStars, repositories);
 
-    var listItems = ordered
+    this.listItems = ordered
     .map((item, i) => {
         return (
           <div item={item} key={i} className="card-list" onClick={() => this.verifyDetailsItem(item.name, item.full_name, item.owner.login)}>
@@ -106,10 +112,10 @@ class User extends Component {
         <div className="user-repositories">
           <div className="user-repositories-title">
             <h3>Repositories:</h3>
-            <button className="button-icon"><img src={loop}/></button>
+            <button className="button-icon" onClick={() => this.orderByItem(this.listItems)}><img src={arrow}/></button>
           </div>
           <div className="user-repositories-list">
-            {listItems}
+            {this.listItems}
           </div>
         </div>
         <div className="footer-content">
