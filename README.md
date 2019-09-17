@@ -19,3 +19,4 @@
 
 Gostei demais de realizar o desafio, tentei me aprofundar ao máximo na linguaguem entendo que talvez tenha cometido alguns erros porém, foi um ótimo aprendizado e um excelente teste.
 
+- Executei um build no heroku porém, não está executando segue URL: https://git.heroku.com/react-centauro.git
